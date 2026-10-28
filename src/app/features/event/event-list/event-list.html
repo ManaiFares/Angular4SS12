@@ -1,0 +1,23 @@
+<h1>{{ title() }}</h1>
+
+<input type="text" placeholder="tape category" [(ngModel)]="item" />
+
+<div class="container">
+  <button routerLink="/events/add">add new event</button>
+
+  <div class="row">
+    @for (event of filteredEvents; track event.id) {
+      <app-card [event]="event"></app-card>
+    } @empty {
+      <h2>aucun event n'est</h2>
+    }
+  </div>
+  <div class="col">
+    <h1>Favorite liste</h1>
+    <ul>
+      @for (event of favoriteList(); track event.id) {
+        <li>{{ event.titre }}</li>
+      }
+    </ul>
+  </div>
+</div>
